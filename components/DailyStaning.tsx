@@ -10,13 +10,25 @@ export default function DailyStanding() {
     {
       title: "",
       type: "",
+      createDate:"",
       date: new Date(),
       topics: [],
       status: "",
     },
   ])
+    const [todayData, setTodayData] = useState<TodoDataType>({
+      title: "Undefined",
+      type: "Undefined",
+      createDate: "Undefined",
+      date: new Date(),
+      topics: ["comming soon"],
+      status: "Undefined",
+    })
   const fetchTodoList = async () => {
     const data = await Todo.getTodoList()
+    const todayData=await Todo.getTodoOneFromList()
+    setTodayData(todayData)
+
     setTodoData(data)
     console.log(data)
   }
@@ -37,14 +49,22 @@ export default function DailyStanding() {
             <h1 className="text-center">Today Task</h1>
             <div className="flex relative ">
               <div className="px-8 py-10 relative z-10 w-full  border-gray-800 bg-gray-900 opacity-100">
-                <h1 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">todo.title</h1>
-                <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">todo.date</h2>
-                <h1 className="title-font text-lg font-medium text-white mb-3 underline cursor-pointer">todo.type</h1>
+                <h1 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">
+                  {todayData.title}
+                </h1>
+                <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">
+                  {todayData.createDate}
+                </h2>
+                <h1 className="title-font text-lg font-medium text-white mb-3 underline cursor-pointer">
+                  {todayData.type}
+                </h1>
 
                 <ol className="list-decimal">
-                  <li>useEffect *useState*useState</li> <li>useState</li>
+                  {todayData?.topics?.map((topic, idx) => (
+                    <li key={idx}>{topic}</li>
+                  ))}
                 </ol>
-                <p className="leading-relaxed font-bold text-xl text-red-700">Status : todo.status</p>
+                <p className="leading-relaxed font-bold text-xl text-red-700">Status : {todayData.status}</p>
               </div>
             </div>
           </div>
@@ -55,7 +75,9 @@ export default function DailyStanding() {
                 <div className="flex relative border-b-4 hover:opacity-90  border-b-white">
                   <div className="px-8 py-10 relative z-10 w-full  border-gray-800 bg-gray-900 opacity-100">
                     <h1 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">{todo.title}</h1>
-                    {/* <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">{todo.date}</h2> */}
+                    <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">
+                      {todo.createDate}
+                    </h2>
                     <h1 className="title-font text-lg font-medium text-white mb-3 underline cursor-pointer">
                       {todo.type}
                     </h1>

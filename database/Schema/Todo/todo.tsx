@@ -4,10 +4,10 @@ import moment from 'moment';
 export interface Todo extends Document {
   title: string
   type: string
-  date: {type:Date}
-  topics:string[]
-  status:string
-
+  createDate:string
+  date: { type: Date }
+  topics: string[]
+  status: string
 }
 
 const TodoSchema = new mongoose.Schema({
@@ -17,7 +17,9 @@ const TodoSchema = new mongoose.Schema({
     type: Date,
     default: () => new Date().toLocaleDateString(),
   },
-
+   createDate:{
+    type:String,
+   },
   topics: {
     type: [String],
     default: [],

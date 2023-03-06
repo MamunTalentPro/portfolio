@@ -6,12 +6,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     try {
 
-     const { title,type ,topics,status} = req.body as { title:string,type:string,date:string,topics:string[],status:string}
+     const { title, type, topics, status, createDate } = req.body as {
+       title: string
+       type: string
+       createDate: string
+       topics: string[]
+       status: string
+     }
       // console.log(name, email)
 
 
-    const date = new Date().toJSON().slice(0, 10)
-      const todo = await Todo.create({ title, type, date, topics ,status})
+    const date = new Date()
+      const todo = await Todo.create({ title, type, date,createDate, topics ,status})
 
       res.status(201).json(todo)
     } catch (error) {
