@@ -1253,6 +1253,7 @@ module.exports = {
       500: "500ms",
       700: "700ms",
       1000: "1000ms",
+      10000000: "10000000ms",
     },
     transitionDuration: {
       DEFAULT: "150ms",
@@ -1267,6 +1268,7 @@ module.exports = {
       600: "600ms",
       700: "700ms",
       1000: "1000ms",
+      10000000: "10000000ms",
     },
     transitionProperty: {
       none: "none",
@@ -1383,7 +1385,6 @@ module.exports = {
   ],
 
   plugins: [
-    
     plugin(function ({ addComponents, addUtilities }) {
       addUtilities({
         ".transform3d": {
