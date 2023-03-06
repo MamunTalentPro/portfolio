@@ -1,22 +1,26 @@
 import mongoose, { Document } from "mongoose"
+import moment from 'moment';
 
 export interface Todo extends Document {
   title: string
   type: string
-  date: Date
+  date: {type:Date}
   topics:string[]
   status:string
 
 }
 
 const TodoSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  type: { type: String, required: true },
-  date: { type: Date, required: true },
+  title: { type: String, default: "" },
+  type: { type: String, default: "" },
+  date: {
+    type: Date,
+    default: () => new Date().toLocaleDateString(),
+  },
+
   topics: {
     type: [String],
     default: [],
-
   },
   status: {
     type: String,
