@@ -62,7 +62,7 @@ export default function DailyStanding() {
 
                     <ol className="list-decimal">
                       {todo.topics.map((topic, idx) => (
-                        <li>{topic}</li>
+                        <li key={idx}>{topic}</li>
                       ))}
                     </ol>
                     <p className="leading-relaxed font-bold text-xl text-red-700">Status : {todo.status}</p>
