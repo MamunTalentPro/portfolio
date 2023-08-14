@@ -42,7 +42,7 @@ Monetary compensation at various Software companies of Bangladesh for an entry-l
           <thead className="text-xs text-white uppercase  dark:bg-gray-700 dark:text-gray-400">
             <tr>
 
-              { rowsOfCompanyProfile.map((row: string, index:number) => <th scope="col" className="px-6 py-3 text-center">
+              { rowsOfCompanyProfile.map((row: string, index:number) => <th key={row} scope="col" className="px-6 py-3 text-center">
                 {row}
               </th>)}
 
@@ -51,7 +51,7 @@ Monetary compensation at various Software companies of Bangladesh for an entry-l
           <tbody>
 
             { companyNameAndProfile.map((data:any)=>
-            <tr className=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-700 dark:hover:bg-gray-600">
+            <tr key={data.name} className=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-700 dark:hover:bg-gray-600">
 
                 { rowsOfCompanyProfile.map((v,indx:number)=>
                       <th key={indx}

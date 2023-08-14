@@ -40,7 +40,7 @@ export default function CompanySalary() {
           <thead className="text-xs text-white uppercase  dark:bg-gray-700 dark:text-gray-400">
             <tr>
 
-              { rows.map((row: string, index: number) => <th scope="col" className="px-6 py-3 text-center">
+              { rows.map((row: string, index: number) => <th key={row} scope="col" className="px-6 py-3 text-center">
                 { row }
               </th>) }
 
@@ -49,7 +49,7 @@ export default function CompanySalary() {
           <tbody>
 
             { companyNameAndSalary.map((data: any) =>
-              <tr className=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-700 dark:hover:bg-gray-600">
+              <tr key={data.name} className=" border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-yellow-700 dark:hover:bg-gray-600">
 
                 { rows.map((v, indx: number) =>
                   <th key={ indx }
